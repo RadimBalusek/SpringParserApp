@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<h2>Hell spy searcher</h2>
+<h3>Enter movie name:</h3>
+
+<form th:action="@{/movie}" th:object="${movie}" method="post">
+
+    Movie Name: <input type="text" th:field="*{name}"/>
+    <br/>
+    <br/>
+    <fieldset>
+        <legend>Choose your resolution</legend>
+        <tr>
+            <td>
+                   <span th:each="resolution : ${resolutions}">
+                       <input type="checkbox" th:field="*{resolutions}" th:value="${resolution}"/>
+                       <label th:for="${#ids.prev('resolutions')}" th:text="${resolution}"></label>
+                   </span>
+            </td>
+        </tr>
+    </fieldset>
+
+    <br/>
+    Format:
+    <select th:field="*{formatId}">
+        <div>
+            <option value="none">none</option>
+            <option value="avi">AVI</option>
+            <option value="mkv">MKV</option>
+            <option value="rar">RAR</option>
+            <option value="mp4">MP4</option>
+        </div>
+    </select>
+    <br/>
+    Language:
+    <select th:field="*{languageId}">
+        <div>
+            <option value="none">none</option>
+            <option value="en">EN</option>
+            <option value="cz">CZ</option>
+        </div>
+    </select>
+    <br/>
+    Translating:
+    <select th:field="*{translatingId}">
+        <div>
+            <option value="none">none</option>
+            <option value="tit">TITULKY</option>
+            <option value="dab">DABING</option>
+        </div>
+    </select>
+    <br/>
+    No kino rip:
+    <input type="checkbox" th:field="*{camrip}" checked="checked"/>
+    <!--    CAM("cam"),
+    HDCAM("hdcam"),
+    KINO("kino"), -->
+    <br/>
+    <br/>
+    <br/>
+    <input type="submit" value="Search">
+</form>
+</body>
+</html>

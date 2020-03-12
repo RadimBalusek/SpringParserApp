@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Result</h1>
+
+<h3>Movies</h3>
+
+    <tr th:each="restResult: ${inputform}">
+        <td th:text="'Name: ' + ${restResult.getName()}" />
+        <br>
+        <td th:text="'Format: ' + ${restResult.getFormat()}" />
+        <br>
+        <td th:text="'Time: ' + ${restResult.getTime()}" />
+        <br>
+        <td th:text="'Resolution: ' + ${restResult.getResolution()}" />
+        <br>
+        <td th:text="'Size: ' + ${restResult.getSize()}" />
+        <br>
+        <td th:text="'Link: ' + ${restResult.getLink()}" />
+        <br>
+        <br>
+    </tr>
+
+<a href="/movie">New search</a>
+</body>
+</html>
