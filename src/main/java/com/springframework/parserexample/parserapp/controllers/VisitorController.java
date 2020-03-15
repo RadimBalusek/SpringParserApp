@@ -1,7 +1,6 @@
 package com.springframework.parserexample.parserapp.controllers;
 
-import com.springframework.parserexample.parserapp.data.Movie;
-import com.springframework.parserexample.parserapp.data.RestResult;
+import com.springframework.parserexample.parserapp.data.*;
 import com.springframework.parserexample.parserapp.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,18 +32,35 @@ public class VisitorController {
     @GetMapping("/movie")
     public String greetingForm(Model model) {
         setConstant(model);
-        model.addAttribute("movie", new Movie());
         return "visitor-view";
     }
 
     //Set check box list for resolution
-    private void setConstant(Model model){
-        List<String> resolutions = new ArrayList<>();
-        for(Movie.Currency currency : Movie.Currency.values()) {
-            resolutions.add(currency.getFormat());
-        }
-        model.addAttribute("resolutions", resolutions);
-    }
+    private void setConstant(Model model) {
+        List<Resolution> resolutions = new ArrayList<>();
+        List<MovieFormat> movieFormats = new ArrayList<>();
 
+        for (ResolutionType resolutionEnum : ResolutionType.values()) {
+
+            if (null == resolutionEnum.getResolutionType()) { // default resolution checkbox checked for type none
+                resolutions.add(new Resolution(resolutionEnum.getResolutionType(), true));
+            } else {
+                resolutions.add(new Resolution(resolutionEnum.getResolutionType(), false));
+            }
+        }
+
+        for (FormatId formatIdEnum : FormatId.values()) {
+
+            if (formatIdEnum.getFormatId().contains("AVI")) {  // default format checkbox checked for type AVI
+                movieFormats.add(new MovieFormat(formatIdEnum.getFormatId(), true));
+            } else {
+                movieFormats.add(new MovieFormat(formatIdEnum.getFormatId(), false));
+            }
+        }
+
+        model.addAttribute("movieFormats", movieFormats);
+        model.addAttribute("resolutions", resolutions);
+        model.addAttribute("movie", new Movie());
+    }
 
 }

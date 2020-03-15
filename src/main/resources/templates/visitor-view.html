@@ -16,48 +16,46 @@
         <tr>
             <td>
                    <span th:each="resolution : ${resolutions}">
-                       <input type="checkbox" th:field="*{resolutions}" th:value="${resolution}"/>
-                       <label th:for="${#ids.prev('resolutions')}" th:text="${resolution}"></label>
+                       <input type="checkbox" name="resolutions" th:value="${resolution.type}" th:checked="${resolution.flag}"/>
+                       <label th:text="${resolution.type}" ></label>
                    </span>
             </td>
         </tr>
     </fieldset>
-
     <br/>
-    Format:
-    <select th:field="*{formatId}">
-        <div>
-            <option value="none">none</option>
-            <option value="avi">AVI</option>
-            <option value="mkv">MKV</option>
-            <option value="rar">RAR</option>
-            <option value="mp4">MP4</option>
-        </div>
-    </select>
+    <fieldset>
+        <legend>Choose your format</legend>
+        <tr>
+            <td>
+                   <span th:each="movieFormat : ${movieFormats}">
+                       <input type="checkbox" name="movieFormat" th:value="${movieFormat.movieFormat}" th:checked="${movieFormat.flag}"/>
+                       <label th:text="${movieFormat.movieFormat}" ></label>
+                   </span>
+            </td>
+        </tr>
+    </fieldset>
+    <br/>
     <br/>
     Language:
     <select th:field="*{languageId}">
         <div>
-            <option value="none">none</option>
             <option value="en">EN</option>
             <option value="cz">CZ</option>
+            <option value="none">NONE</option>
         </div>
     </select>
     <br/>
     Translating:
     <select th:field="*{translatingId}">
         <div>
-            <option value="none">none</option>
-            <option value="tit">TITULKY</option>
-            <option value="dab">DABING</option>
+            <option value="tit">TITLE</option>
+            <option value="dab">DUBBING</option>
+            <option value="none">NONE</option>
         </div>
     </select>
     <br/>
     No kino rip:
-    <input type="checkbox" th:field="*{camrip}" checked="checked"/>
-    <!--    CAM("cam"),
-    HDCAM("hdcam"),
-    KINO("kino"), -->
+    <input type="checkbox" name="camrip" th:checked="true"/>
     <br/>
     <br/>
     <br/>

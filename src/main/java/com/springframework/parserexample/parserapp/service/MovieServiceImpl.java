@@ -1,5 +1,6 @@
 package com.springframework.parserexample.parserapp.service;
 
+import com.springframework.parserexample.parserapp.data.CamRip;
 import com.springframework.parserexample.parserapp.data.Movie;
 import com.springframework.parserexample.parserapp.data.RestResult;
 import org.springframework.stereotype.Service;
@@ -31,14 +32,14 @@ public class MovieServiceImpl implements MovieService {
         for (RestResult item : listBeforeFilter) {
 
             // filter for check if result compare format (avi, mp4 etc..)
-            if (movie.getFormatId().equals("none")) {
+            if (null == movie.getFormatId()) {
                 filter1 = true;
             } else {
                 filter1 = MovieFilters.findCharacter(item.getFormat(), movie.getFormatId());
             }
 
             // filter for check if result compare resolution (1920x800)
-            if (movie.getResolutions().contains("none")){
+            if (null == movie.getResolutions()){
                 filter2 = true;
             } else {
                 for (String resolution : movie.getResolutions()) {
@@ -62,7 +63,7 @@ public class MovieServiceImpl implements MovieService {
 
             // enable test for cam rip, check if name don't compare pointer for cam rip ex.: KINO, CAM, HDCAM
             if (movie.isCamrip()) {
-                filter5 = !MovieFilters.findCharacter(item.getName(), Movie.FileName.KINO.getFileName(), Movie.FileName.CAM.getFileName(), Movie.FileName.HDCAM.getFileName());
+                filter5 = !MovieFilters.findCharacter(item.getName(), CamRip.KINO.getFileName(), CamRip.CAM.getFileName(), CamRip.HDCAM.getFileName());
             }else{
                 filter5 = true;
             }

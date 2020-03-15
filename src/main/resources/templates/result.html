@@ -20,7 +20,7 @@
         <br>
         <td th:text="'Size: ' + ${restResult.getSize()}" />
         <br>
-        <td th:text="'Link: ' + ${restResult.getLink()}" />
+        <a th:href="@{${restResult.getLink()}}">Click on link</a>
         <br>
         <br>
     </tr>
