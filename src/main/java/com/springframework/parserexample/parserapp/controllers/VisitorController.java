@@ -23,7 +23,7 @@ public class VisitorController {
     }
 
     @PostMapping("/movie")
-    public String handlePostRequest(@ModelAttribute Movie movie, Model model) {
+    public String handlePostRequest(@ModelAttribute Movie movie,  Model model) {
         List<RestResult> outputList = movieService.searchMovie(movie);
         model.addAttribute("inputform", outputList);
         return "result";
@@ -40,7 +40,7 @@ public class VisitorController {
         List<Resolution> resolutions = new ArrayList<>();
         List<MovieFormat> movieFormats = new ArrayList<>();
 
-        for (ResolutionType resolutionEnum : ResolutionType.values()) {
+        for (Resolution.ResolutionType resolutionEnum : Resolution.ResolutionType.values()) {
 
             if (null == resolutionEnum.getResolutionType()) { // default resolution checkbox checked for type none
                 resolutions.add(new Resolution(resolutionEnum.getResolutionType(), true));
@@ -49,7 +49,7 @@ public class VisitorController {
             }
         }
 
-        for (FormatId formatIdEnum : FormatId.values()) {
+        for (Movie.FormatId formatIdEnum : Movie.FormatId.values()) {
 
             if (formatIdEnum.getFormatId().contains("AVI")) {  // default format checkbox checked for type AVI
                 movieFormats.add(new MovieFormat(formatIdEnum.getFormatId(), true));

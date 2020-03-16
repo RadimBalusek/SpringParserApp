@@ -35,7 +35,7 @@ public class MovieServiceImpl implements MovieService {
             if (null == movie.getFormatId()) {
                 filter1 = true;
             } else {
-                filter1 = MovieFilters.findCharacter(item.getFormat(), movie.getFormatId());
+                filter1 = MovieFilters.findCharacter(item.getFormat(), movie.getFormatId().toLowerCase());
             }
 
             // filter for check if result compare resolution (1920x800)

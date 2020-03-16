@@ -27,9 +27,9 @@
         <legend>Choose your format</legend>
         <tr>
             <td>
-                   <span th:each="movieFormat : ${movieFormats}">
-                       <input type="checkbox" name="movieFormat" th:value="${movieFormat.movieFormat}" th:checked="${movieFormat.flag}"/>
-                       <label th:text="${movieFormat.movieFormat}" ></label>
+                   <span th:each="formatId : ${movieFormats}">
+                       <input type="checkbox" name="formatId" th:value="${formatId.movieFormat}" th:checked="${formatId.flag}"/>
+                       <label th:text="${formatId.movieFormat}" ></label>
                    </span>
             </td>
         </tr>

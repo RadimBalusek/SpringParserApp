@@ -39,7 +39,7 @@ public class RestClient {
         resultList = getRestClientList(target, getRequest);
 
         // this cycle is use for searching one next pages
-        for (int i = 2; i < 100; i++) {  // searching till 100 pages max
+        for (int i = 2; i < 10; i++) {  // searching till 10 pages max
             getRequest = new HttpGet(hellSpyUrlBuilder(urlNextPageStart, i, urlNextPageEnd, name, endUrl)); // build url for next page
             resultListNexPage = getRestClientList(target, getRequest); // get List of parsed object for next page
 
