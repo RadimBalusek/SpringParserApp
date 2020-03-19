@@ -49,7 +49,7 @@ public class VisitorController {
             }
         }
 
-        for (Movie.FormatId formatIdEnum : Movie.FormatId.values()) {
+        for (MovieFormat.FormatId formatIdEnum : MovieFormat.FormatId.values()) {
 
             if (formatIdEnum.getFormatId().contains("AVI")) {  // default format checkbox checked for type AVI
                 movieFormats.add(new MovieFormat(formatIdEnum.getFormatId(), true));
