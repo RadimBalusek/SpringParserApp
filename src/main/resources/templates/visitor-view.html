@@ -16,8 +16,9 @@
         <tr>
             <td>
                    <span th:each="resolution : ${resolutions}">
-                       <input type="checkbox" name="resolutions" th:value="${resolution.type}" th:checked="${resolution.flag}"/>
-                       <label th:text="${resolution.type}" ></label>
+                       <input type="checkbox" name="resolutions" th:value="${resolution.type}"
+                              th:checked="${resolution.flag}"/>
+                       <label th:text="${resolution.type}"></label>
                    </span>
             </td>
         </tr>
@@ -28,13 +29,13 @@
         <tr>
             <td>
                    <span th:each="formatId : ${movieFormats}">
-                       <input type="checkbox" name="formatId" th:value="${formatId.type}" th:checked="${formatId.flag}"/>
-                       <label th:text="${formatId.type}" ></label>
+                       <input type="checkbox" name="formatId" th:value="${formatId.type}"
+                              th:checked="${formatId.flag}"/>
+                       <label th:text="${formatId.type}"></label>
                    </span>
             </td>
         </tr>
     </fieldset>
-    <br/>
     <br/>
     Language:
     <select th:field="*{languageId}">
@@ -58,8 +59,21 @@
     <input type="checkbox" name="camrip" th:checked="true"/>
     <br/>
     <br/>
+    <fieldset>
+    <legend>Notify by email:</legend>
+    <tr>
+        <td>
+            <label th:text="Enable"></label>
+            <input type="checkbox" name="emailFlag" th:checked="*{emailFlag}"/><br/>
+            Email: <input type="text" th:field="*{emailAddress}"/><br/>
+<!--            Time of repetition: <input type="text" th:field="*{emailTimer}"/>-->
+        </td>
+    </tr>
+    </fieldset>
+    <br/>
     <br/>
     <input type="submit" value="Search">
 </form>
+
 </body>
 </html>

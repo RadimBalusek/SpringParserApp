@@ -1,6 +1,7 @@
 package com.springframework.parserexample.parserapp.data;
 import lombok.Data;
 
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -19,4 +20,9 @@ public class Movie {
 
     private boolean camrip; // true
 
+    private boolean emailFlag; // check button if is email allow
+
+    private String emailAddress; // emailAddress
+
+ //   private Date emailTimer ; // Timer
 }

@@ -1,8 +1,12 @@
 package com.springframework.parserexample.parserapp.controllers;
 
 import com.springframework.parserexample.parserapp.data.*;
+import com.springframework.parserexample.parserapp.service.EmailService;
 import com.springframework.parserexample.parserapp.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +16,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Controller
 public class VisitorController {
 
     private MovieService movieService;
+
+    private EmailService emailService;
+
+    @Autowired
+    public void setEmailService(EmailService emailService) {
+        this.emailService = emailService;
+    }
 
     @Autowired
     public void setCustomerService(MovieService movieService) {
@@ -23,9 +35,12 @@ public class VisitorController {
     }
 
     @PostMapping("/movie")
-    public String handlePostRequest(@ModelAttribute Movie movie,  Model model) {
+    public String handlePostRequest(@ModelAttribute Movie movie, Model model) {
         List<RestResult> outputList = movieService.searchMovie(movie);
         model.addAttribute("inputform", outputList);
+//        if (movie.isEmailFlag()) {
+//            emailService.sendmail(movie.getEmailAddress(), outputList);
+//        }
         return "result";
     }
 
