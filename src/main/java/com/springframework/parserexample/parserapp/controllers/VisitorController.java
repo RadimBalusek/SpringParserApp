@@ -25,22 +25,18 @@ public class VisitorController {
     private EmailService emailService;
 
     @Autowired
-    public void setEmailService(EmailService emailService) {
-        this.emailService = emailService;
-    }
-
-    @Autowired
-    public void setCustomerService(MovieService movieService) {
+    public VisitorController(MovieService movieService, EmailService emailService) {
         this.movieService = movieService;
+        this.emailService = emailService;
     }
 
     @PostMapping("/movie")
     public String handlePostRequest(@ModelAttribute Movie movie, Model model) {
         List<RestResult> outputList = movieService.searchMovie(movie);
         model.addAttribute("inputform", outputList);
-//        if (movie.isEmailFlag()) {
-//            emailService.sendmail(movie.getEmailAddress(), outputList);
-//        }
+        if (movie.isEmailFlag()) {
+            emailService.sendmail(movie.getEmailAddress(), outputList);
+        }
         return "result";
     }
 
