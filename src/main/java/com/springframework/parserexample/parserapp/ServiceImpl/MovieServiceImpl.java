@@ -1,8 +1,11 @@
-package com.springframework.parserexample.parserapp.service;
+package com.springframework.parserexample.parserapp.ServiceImpl;
 
 import com.springframework.parserexample.parserapp.data.CamRip;
 import com.springframework.parserexample.parserapp.data.Movie;
 import com.springframework.parserexample.parserapp.data.RestResult;
+import com.springframework.parserexample.parserapp.service.MovieFilters;
+import com.springframework.parserexample.parserapp.service.MovieService;
+import com.springframework.parserexample.parserapp.service.RestClient;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

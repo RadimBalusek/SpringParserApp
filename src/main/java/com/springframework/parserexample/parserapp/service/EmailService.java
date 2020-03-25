@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface EmailService {
 
-    public void sendmail(String emailAddress, List<RestResult> restResult);
+     void sendmail(String emailAddress, List<RestResult> restResult);
 }

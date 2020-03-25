@@ -1,6 +1,7 @@
-package com.springframework.parserexample.parserapp.service;
+package com.springframework.parserexample.parserapp.ServiceImpl;
 
 import com.springframework.parserexample.parserapp.data.RestResult;
+import com.springframework.parserexample.parserapp.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
