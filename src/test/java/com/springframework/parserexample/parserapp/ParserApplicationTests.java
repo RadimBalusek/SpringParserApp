@@ -1,8 +1,7 @@
 package com.springframework.parserexample.parserapp;
 
 import com.springframework.parserexample.parserapp.data.RestResult;
-import com.springframework.parserexample.parserapp.service.MovieRegex;
-import org.apache.http.util.EntityUtils;
+import com.springframework.parserexample.parserapp.api.hellspyModule.MovieRegex;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 

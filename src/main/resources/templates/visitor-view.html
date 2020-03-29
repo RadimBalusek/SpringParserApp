@@ -40,23 +40,23 @@
     Language:
     <select th:field="*{languageId}">
         <div>
+            <option value="none">NONE</option>
             <option value="en">EN</option>
             <option value="cz">CZ</option>
-            <option value="none">NONE</option>
         </div>
     </select>
     <br/>
     Translating:
     <select th:field="*{translatingId}">
         <div>
+            <option value="none">NONE</option>
             <option value="tit">TITLE</option>
             <option value="dab">DUBBING</option>
-            <option value="none">NONE</option>
         </div>
     </select>
     <br/>
     No kino rip:
-    <input type="checkbox" name="camrip" th:checked="true"/>
+    <input type="checkbox" name="camrip" th:checked="false"/>
     <br/>
     <br/>
     <fieldset>

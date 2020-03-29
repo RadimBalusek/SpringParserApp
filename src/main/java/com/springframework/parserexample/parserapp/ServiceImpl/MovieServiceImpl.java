@@ -5,7 +5,7 @@ import com.springframework.parserexample.parserapp.data.Movie;
 import com.springframework.parserexample.parserapp.data.RestResult;
 import com.springframework.parserexample.parserapp.service.MovieFilters;
 import com.springframework.parserexample.parserapp.service.MovieService;
-import com.springframework.parserexample.parserapp.service.RestClient;
+import com.springframework.parserexample.parserapp.api.hellspyModule.CollectOutputList;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class MovieServiceImpl implements MovieService {
 
         List<RestResult> listBeforeFilter;
         List<RestResult> listAferFilter = new ArrayList<>();
-        RestClient restResult = new RestClient();
+        CollectOutputList restResult = new CollectOutputList();
         listBeforeFilter = restResult.CustomRestClient(nameToRestCall);
 
         for (RestResult item : listBeforeFilter) {
@@ -72,7 +72,11 @@ public class MovieServiceImpl implements MovieService {
             }
 
             if (filter1 && filter2 && filter3 && filter4 && filter5) {
-                listAferFilter.add(item);
+                if(listAferFilter.size()>100){
+                    break;
+                }else {
+                    listAferFilter.add(item);
+                }
             }
         }
 

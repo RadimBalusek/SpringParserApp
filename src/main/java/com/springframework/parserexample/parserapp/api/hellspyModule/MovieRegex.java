@@ -1,4 +1,4 @@
-package com.springframework.parserexample.parserapp.service;
+package com.springframework.parserexample.parserapp.api.hellspyModule;
 
 import com.springframework.parserexample.parserapp.data.RestResult;
 
@@ -44,7 +44,7 @@ public class MovieRegex {
                 "(\\d{1,4}x\\d{1,4}).{1,100}holder\">" + // group(4) - movie resolution (ex.: 720x306)
                 "(\\d{1,4}MB|\\d{1,4}\\.\\d{1,4}GB)" + // group(5) - movie size (ex.: 117MB)
                 ".{1,100}<ahref=\"/" +
-                "(.{1,100})" +  // group(6) - link (ex.: star-wars-the-clone-wars-s07e03-cztit-avi/85573401)
+                "(.{1,100})" +  // group(6) - movie link (ex.: star-wars-the-clone-wars-s07e03-cztit-avi/85573401)
                 "\">");
         Matcher m = p.matcher(output);
         while (m.find()) {
